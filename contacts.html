@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Контакти — ПММ · Облік пального</title>
+<meta name="description" content="Зв'яжіться з підтримкою застосунку ПММ (Облік пального) та знайдіть відповіді на часті запитання.">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/app-icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="brand" href="index.html">
+      <img src="assets/img/app-icon-192.png" alt="">
+      ПММ · Облік пального
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Меню" aria-expanded="false">☰</button>
+    <nav class="nav" id="siteNav">
+      <a href="index.html#features">Можливості</a>
+      <a href="index.html#how">Як це працює</a>
+      <a href="index.html#plans">Підписка</a>
+      <a href="contacts.html">Контакти</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section style="padding-top: 48px;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Контакти</span>
+        <h1 style="font-size: clamp(1.8rem, 3vw + 1rem, 2.6rem);">Підтримка користувачів</h1>
+        <p>Маєте запитання, пропозицію чи знайшли помилку в розрахунках — напишіть нам.</p>
+      </div>
+
+      <div class="contact-card">
+        <div>
+          <h3>Електронна пошта</h3>
+          <p style="margin-bottom:0;">
+            <a href="mailto:alexeyfeoktistov1@gmail.com">alexeyfeoktistov1@gmail.com</a>
+          </p>
+        </div>
+        <a class="btn btn-primary" href="mailto:alexeyfeoktistov1@gmail.com">Написати листа</a>
+      </div>
+
+      <div class="contact-card">
+        <div>
+          <h3>Телефон</h3>
+          <p style="margin-bottom:0;">
+            <a href="tel:+380984040741">+380 98 404 07 41</a>
+          </p>
+        </div>
+        <a class="btn btn-primary" href="tel:+380984040741">Подзвонити</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Часті запитання</span>
+        <h2>FAQ</h2>
+      </div>
+
+      <div style="max-width: 780px;">
+        <details class="faq-item" open>
+          <summary>Чи потрібен інтернет для роботи застосунку?</summary>
+          <p>Ні. ПММ працює повністю офлайн — усі дані вводяться й зберігаються
+            безпосередньо на вашому пристрої. Інтернет потрібен лише для оформлення
+            підписки через App Store чи Google Play.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Де зберігаються мої дані?</summary>
+          <p>Локально на вашому пристрої, у внутрішній базі даних застосунку. Розробник
+            не має доступу до цих даних — вони нікуди не передаються.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Як скасувати підписку?</summary>
+          <p>Підписка керується через ваш обліковий запис App Store (Apple) або
+            Google Play (Google) у розділі підписок — не в самому застосунку.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Якими мовами доступний застосунок?</summary>
+          <p>Наразі лише українською.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Що станеться з даними, якщо я видалю застосунок?</summary>
+          <p>Оскільки всі дані зберігаються лише локально, видалення застосунку
+            призводить до їх повного й безповоротного видалення. Рекомендуємо заздалегідь
+            експортувати важливі документи.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <a class="brand" href="index.html">
+        <img src="assets/img/app-icon-192.png" alt="">
+        ПММ · Облік пального
+      </a>
+      <nav>
+        <a href="contacts.html">Контакти</a>
+        <a href="privacy.html">Політика конфіденційності</a>
+        <a href="terms.html">Ліцензійна угода користувача</a>
+      </nav>
+    </div>
+    <p class="site-footer__meta">© 2026 ПММ · Облік пального. Застосунок працює повністю офлайн.</p>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const siteNav = document.getElementById('siteNav');
+  navToggle.addEventListener('click', () => {
+    const isOpen = siteNav.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>
+</body>
+</html>

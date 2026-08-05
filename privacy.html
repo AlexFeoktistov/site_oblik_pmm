@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Політика конфіденційності — ПММ · Облік пального</title>
+<meta name="description" content="Політика конфіденційності застосунку ПММ (Облік пального): застосунок працює офлайн, дані зберігаються лише локально на пристрої.">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/app-icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="brand" href="index.html">
+      <img src="assets/img/app-icon-192.png" alt="">
+      ПММ · Облік пального
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Меню" aria-expanded="false">☰</button>
+    <nav class="nav" id="siteNav">
+      <a href="index.html#features">Можливості</a>
+      <a href="index.html#how">Як це працює</a>
+      <a href="index.html#plans">Підписка</a>
+      <a href="contacts.html">Контакти</a>
+    </nav>
+  </div>
+</header>
+
+<main class="legal">
+  <h1>Політика конфіденційності</h1>
+  <p class="updated">Дата останнього оновлення: 05.08.2026</p>
+
+  <p>Застосунок «ПММ» (Облік пального) розроблено з максимальною повагою до приватності
+    користувача.</p>
+
+  <h2>1. Які дані ми збираємо</h2>
+  <p>Застосунок працює повністю офлайн. Уся інформація, яку ви вводите (дані про техніку,
+    дорожні листи, журнали, розрахунки), зберігається виключно локально на вашому пристрої
+    у внутрішній базі даних застосунку. Ми не маємо власних серверів, не передаємо, не
+    збираємо і не бачимо жодних ваших даних. Реєстрація облікового запису не потрібна і
+    не передбачена.</p>
+
+  <h2>2. Дозволи, які використовує застосунок</h2>
+  <ul>
+    <li><strong>Датчики руху (акселерометр)</strong> — використовуються лише локально для
+      анімації індикатора рівня пального та реакції на струшування пристрою. Дані з
+      датчиків нікуди не передаються і не зберігаються.</li>
+    <li><strong>Доступ до фото/галереї</strong> — використовується лише тоді, коли ви самі
+      експортуєте зображення дорожнього листа чи звіту, щоб зберегти файл у вашу
+      галерею.</li>
+    <li><strong>Сповіщення</strong> — локальні нагадування (наприклад, про закінчення
+      терміну дії дорожнього листа чи наближення техогляду), формуються і показуються
+      повністю на пристрої.</li>
+  </ul>
+
+  <h2>3. Підписка та платежі</h2>
+  <p>Оформлення та обробку платежів за підписку здійснює виключно Apple App Store або
+    Google Play — відповідно до їхніх власних політик конфіденційності. Розробник
+    застосунку не отримує і не зберігає дані вашої платіжної картки, а отримує лише факт
+    наявності активної підписки.</p>
+
+  <h2>4. Треті сторони</h2>
+  <p>Застосунок не використовує аналітичні SDK, рекламні мережі чи будь-які інструменти
+    відстеження поведінки користувача.</p>
+
+  <h2>5. Видалення даних</h2>
+  <p>Усі дані застосунку зберігаються локально. Видалення застосунку з пристрою призводить
+    до повного і безповоротного видалення всіх ваших даних.</p>
+
+  <h2>6. Діти</h2>
+  <p>Застосунок не призначений для дітей і не збирає свідомо жодних даних дітей.</p>
+
+  <h2>7. Зміни до цієї політики</h2>
+  <p>Ми можемо оновлювати цю політику. Актуальна версія завжди доступна на цій сторінці.</p>
+
+  <h2>8. Контакти</h2>
+  <p>З питань конфіденційності звертайтесь:
+    <a href="mailto:alexeyfeoktistov1@gmail.com">alexeyfeoktistov1@gmail.com</a></p>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <a class="brand" href="index.html">
+        <img src="assets/img/app-icon-192.png" alt="">
+        ПММ · Облік пального
+      </a>
+      <nav>
+        <a href="contacts.html">Контакти</a>
+        <a href="privacy.html">Політика конфіденційності</a>
+        <a href="terms.html">Ліцензійна угода користувача</a>
+      </nav>
+    </div>
+    <p class="site-footer__meta">© 2026 ПММ · Облік пального. Застосунок працює повністю офлайн.</p>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const siteNav = document.getElementById('siteNav');
+  navToggle.addEventListener('click', () => {
+    const isOpen = siteNav.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>
+</body>
+</html>
