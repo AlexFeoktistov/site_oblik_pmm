@@ -231,10 +231,40 @@ p {
 .btn-store {
   background: var(--color-ink);
   color: #fff;
+  padding: 10px 20px 10px 16px;
+  gap: 10px;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-store:hover {
+  background: var(--color-primary-dark);
+}
+
+.btn-store__icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.btn-store__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+  font-size: 0.95rem;
+}
+
+.btn-store__text small {
+  font-size: 0.66rem;
+  font-weight: 500;
+  opacity: 0.82;
+}
+
+.btn-store--soon {
   opacity: 0.55;
   cursor: default;
-  font-size: 0.86rem;
-  padding: 11px 18px;
+  pointer-events: none;
+  box-shadow: none;
 }
 
 .btn-row {
