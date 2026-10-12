@@ -1,197 +1,388 @@
 <!doctype html>
 <html lang="uk">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ПММ — Облік пального | застосунок для обліку техніки та дорожніх листів</title>
-<meta name="description" content="ПММ (Облік пального) — застосунок для військовослужбовців: облік техніки, ведення дорожніх листів, автоматичний розрахунок витрати пального й мастил, офіційні документи за Наказом МОУ №440. Працює офлайн, з опційним онлайн-режимом.">
-<meta property="og:title" content="ПММ — Облік пального">
-<meta property="og:description" content="Застосунок для обліку пального, техніки та дорожніх листів. Базовий функціонал безкоштовний, працює офлайн — з опційним онлайн-режимом для спільного доступу.">
-<meta property="og:image" content="assets/img/app-icon-512.png">
-<meta property="og:locale" content="uk_UA">
-<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="assets/img/app-icon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ПММ — облік пального для військової техніки</title>
+    <meta
+      name="description"
+      content="ПММ — застосунок для військовослужбовців для обліку техніки, дорожніх листів, розрахунку витрати пального й мастил та підготовки офіційних документів. Працює офлайн, з опційним онлайн-режимом для спільного доступу."
+    />
+    <meta
+      name="keywords"
+      content="ПММ, облік пального, дорожній лист, військова техніка, витрата пального, ЗСУ"
+    />
+    <meta name="theme-color" content="#556B2F" />
 
-<header class="site-header">
-  <div class="container site-header__bar">
-    <a class="brand" href="index.html">
-      <img src="assets/img/app-icon-192.png" alt="">
-      ПММ · Облік пального
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Меню" aria-expanded="false">☰</button>
-    <nav class="nav" id="siteNav">
-      <a href="#features">Можливості</a>
-      <a href="#how">Як це працює</a>
-      <a href="#online-mode">Онлайн-режим</a>
-      <a href="#plans">Підписка</a>
-      <a href="contacts.html">Контакти</a>
-    </nav>
-  </div>
-</header>
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="ПММ — офлайн-облік пального для військової техніки"
+    />
+    <meta
+      property="og:description"
+      content="Додавайте техніку, ведіть дорожні листи, закривайте ДЛ та отримуйте автоматичні розрахунки без інтернету — або зі спільним доступом через опційний онлайн-режим."
+    />
+    <meta
+      property="og:image"
+      content="https://alexfeoktistov.github.io/site_oblik_pmm/assets/pmm-og-image.png"
+    />
+    <meta property="og:locale" content="uk_UA" />
+    <meta
+      property="og:url"
+      content="https://alexfeoktistov.github.io/site_oblik_pmm/"
+    />
 
-<main>
-  <section class="hero">
-    <div class="container hero__grid">
-      <div>
-        <span class="eyebrow">Офлайн за замовчуванням · опційний онлайн-режим · українською</span>
-        <h1>Облік пального й техніки — без паперу та зайвого клопоту</h1>
-        <p class="lead">ПММ — застосунок для військовослужбовців, відповідальних за облік
-          пально-мастильних матеріалів. Ведіть дорожні листи, закривайте їх і отримуйте
-          готові розрахунки та офіційні документи прямо на телефоні — навіть без інтернету.
-          За бажанням можна увімкнути онлайн-режим для спільного доступу з іншого пристрою.</p>
-        <div class="btn-row">
-          <a class="btn btn-store" href="#">App Store — скоро</a>
-          <a class="btn btn-store" href="#">Google Play — скоро</a>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/app-icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Перейти до основного вмісту</a>
+
+    <header class="site-header">
+      <div class="container header-shell">
+        <a class="brand" href="./index.html" aria-label="ПММ — на головну">
+          <img
+            class="brand-mark"
+            src="./assets/app-icon.png"
+            alt="Іконка застосунку ПММ"
+            width="52"
+            height="52"
+          />
+          <span class="brand-text">
+            <strong>ПММ</strong>
+            <span>Облік пального</span>
+          </span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          Меню
+        </button>
+
+        <nav id="primary-nav" class="primary-nav" aria-label="Основна навігація">
+          <a href="#features">Можливості</a>
+          <a href="#workflow">Як це працює</a>
+          <a href="#online-mode">Онлайн-режим</a>
+          <a href="#pc-download">ПК-версія</a>
+          <a href="#subscription">Підписка</a>
+          <a href="#contact">Контакти</a>
+          <a href="./privacy.html">Політика</a>
+          <a href="./eula.html">EULA</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Офлайн-застосунок для військовослужбовців, з опційним онлайн-режимом</p>
+            <h1>ПММ — облік пального, техніки та дорожніх листів без паперового хаосу</h1>
+            <p class="hero-lead">
+              Застосунок допомагає відповідальним за облік пального та техніки
+              швидко вести дорожні листи, автоматично рахувати витрату пального
+              й мастил та готувати офіційні форми документів.
+            </p>
+
+            <ul class="hero-badges" aria-label="Ключові переваги">
+              <li>Працює повністю офлайн</li>
+              <li>Усі дані зберігаються локально</li>
+              <li>Опційний онлайн-режим для спільного доступу</li>
+              <li>Інтерфейс лише українською</li>
+            </ul>
+
+            <div class="store-buttons" aria-label="Майбутні посилання на магазини">
+              <button class="store-button" type="button" disabled>
+                <span>App Store</span>
+                <small>Скоро</small>
+              </button>
+              <button class="store-button" type="button" disabled>
+                <span>Google Play</span>
+                <small>Скоро</small>
+              </button>
+            </div>
+
+            <p class="hero-note">
+              Посилання на магазини буде додано після публікації застосунку.
+            </p>
+          </div>
+
+          <div class="hero-card">
+            <img
+              class="hero-icon"
+              src="./assets/app-icon.png"
+              alt="Іконка застосунку ПММ"
+              width="220"
+              height="220"
+            />
+            <div class="hero-panel">
+              <h2>Для кого цей застосунок</h2>
+              <p>
+                Для військовослужбовців та службових осіб, які ведуть облік
+                пального, техніки, дорожніх листів і супровідної звітності в
+                підрозділі.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="hero__art">
-        <img src="assets/img/app-icon.png" alt="Іконка застосунку ПММ — цистерна з краплею пального">
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section id="features">
+      <section class="info-strip">
+        <div class="container info-strip-grid">
+          <article class="info-tile">
+            <strong>Офлайн за замовчуванням</strong>
+            <p>Уся база даних зберігається на пристрої. Онлайн-режим і хмара — опційні, вмикаються за бажанням.</p>
+          </article>
+          <article class="info-tile">
+            <strong>Безкоштовна база</strong>
+            <p>Техніка, дорожні листи та закриття ДЛ доступні безкоштовно й без обмежень.</p>
+          </article>
+          <article class="info-tile">
+            <strong>Офіційні форми</strong>
+            <p>Підтримка документів і журналів у форматах, які потрібні в повсякденній роботі.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="features" class="section-block">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Можливості</p>
+            <h2>Все необхідне для обліку пального та техніки</h2>
+            <p>
+              Сайт поділяє функції на базові та додаткові, щоб одразу було
+              зрозуміло, чим можна користуватися безкоштовно, а що відкриває
+              підписка.
+            </p>
+          </div>
+
+          <div class="feature-columns">
+            <article class="feature-card">
+              <div class="feature-card-title">
+                <span class="feature-dot feature-dot-free"></span>
+                <h3>Безкоштовно, без обмежень</h3>
+              </div>
+              <ul class="feature-list">
+                <li>Додавання та облік техніки: марка, номер, підрозділ, паливо, ємність баків.</li>
+                <li>Створення та ведення дорожніх листів і щоденних записів.</li>
+                <li>Автоматичний розрахунок витрати пального та мастил за введеними даними.</li>
+                <li>Закриття дорожніх листів та збереження історії в застосунку.</li>
+                <li>Повністю офлайн-робота без реєстрації, підключення до сервера чи хмарного кабінету.</li>
+              </ul>
+            </article>
+
+            <article class="feature-card feature-card-premium">
+              <div class="feature-card-title">
+                <span class="feature-dot feature-dot-premium"></span>
+                <h3>Додатково в підписці</h3>
+              </div>
+              <ul class="feature-list">
+                <li>Донесення ПММ за обраний період.</li>
+                <li>Журнали: Д84 та журнал виходу машин з парку.</li>
+                <li>Інфографіка по закритих дорожніх листах.</li>
+                <li>Генерація офіційного Дорожнього листа у PDF (Додаток 80 до Наказу МОУ №440).</li>
+              </ul>
+              <p class="feature-note">Функції активуються щомісячною підпискою через App Store / Google Play.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="section-block section-muted">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Як це працює</p>
+            <h2>Короткий робочий цикл у 4 кроки</h2>
+          </div>
+
+          <div class="steps-grid">
+            <article class="step-card">
+              <span class="step-number">1</span>
+              <h3>Додайте техніку</h3>
+              <p>Збережіть основні відомості про машину, паливо, норми витрати та підрозділ.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">2</span>
+              <h3>Ведіть дорожній лист</h3>
+              <p>Щодня фіксуйте пробіг, мотогодини, отримане та витрачене пальне й оливи.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">3</span>
+              <h3>Закривайте ДЛ</h3>
+              <p>Після завершення періоду закрийте лист і збережіть його в архіві застосунку.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">4</span>
+              <h3>Отримуйте розрахунки та звіти</h3>
+              <p>Застосунок автоматично підсумує показники та підготує потрібні форми.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="online-mode" class="section-block">
+        <div class="container subscription-layout">
+          <div class="section-heading section-heading-left">
+            <p class="eyebrow">Онлайн-режим</p>
+            <h2>Опційний спільний доступ до техніки та ДЛ</h2>
+            <p>
+              Застосунок і надалі повністю працює офлайн. За бажанням можна
+              увімкнути онлайн-режим, щоб переглядати або редагувати ту саму
+              техніку й дорожні листи з іншого пристрою — наприклад, коли з
+              документами працюють одразу декілька відповідальних осіб.
+            </p>
+          </div>
+
+          <aside class="subscription-card">
+            <h3>Як це працює</h3>
+            <ol class="subscription-list">
+              <li>Вмикається вручну в налаштуваннях — без email, телефону чи пароля.</li>
+              <li>Перегляд і надання доступу до своїх даних — безкоштовно для всіх.</li>
+              <li>Редагування чужих даних (лише за наданим власником дозволом) — потребує Pro-підписки.</li>
+              <li>Дані можна повністю видалити з сервера будь-коли прямо в застосунку.</li>
+            </ol>
+            <p class="subscription-note">
+              Детальніше — у <a href="./privacy.html">Політиці конфіденційності</a>, розділ «Онлайн-режим».
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="pc-download" class="section-block section-muted">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Можливості</span>
-        <h2>Усе для щоденного обліку — і розширені інструменти, коли вони потрібні</h2>
+      <div class="section-heading">
+        <p class="eyebrow">Версія для комп'ютера</p>
+        <h2>ПК-версія — той самий облік на Mac і Windows</h2>
+        <p>
+          Окремий офлайн-застосунок для комп'ютера з тією самою базою техніки
+          й дорожніх листів. Підключіть його до телефону в налаштуваннях — і
+          дані синхронізуються автоматично.
+        </p>
       </div>
-      <div class="grid-2">
-        <div class="plan-card">
-          <h3><span class="badge badge--free">Безкоштовно</span> Базовий облік</h3>
-          <p>Доступно всім користувачам без обмежень і без підписки.</p>
-          <ul class="feature-list">
-            <li>Картки техніки: марка, номер, підрозділ, паливо, ємність баків</li>
-            <li>Ведення дорожніх і робочих листів, щоденні записи</li>
-            <li>Автоматичний розрахунок витрати пального й мастил</li>
-            <li>Закриття дорожніх листів з підписом командира підрозділу</li>
-            <li>Нагадування про завершення терміну дії ДЛ і техогляд</li>
-          </ul>
-        </div>
-        <div class="plan-card plan-card--pro">
-          <h3><span class="badge">Підписка</span> Розширений доступ</h3>
-          <p>Щомісячна підписка через App Store / Google Play відкриває звітність
-            і офіційні документи.</p>
-          <ul class="feature-list">
-            <li>Донесення ПММ за обраний період</li>
-            <li>Журнали — Д84 та журнал виходу машин з парку</li>
-            <li>Інфографіка по закритих дорожніх листах</li>
-            <li>Генерація офіційного Дорожнього листа у PDF (Додаток 80)</li>
-            <li>Редагування чужих ДЛ/РЛ і техніки в онлайн-режимі за наданим доступом</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="how">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Як це працює</span>
-        <h2>Від додавання техніки до готового звіту — чотири кроки</h2>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <span class="step__num">1</span>
-          <h3>Додайте техніку</h3>
-          <p>Марка, бортовий номер, підрозділ, тип пального й нормативи витрати.</p>
-        </div>
-        <div class="step">
-          <span class="step__num">2</span>
-          <h3>Ведіть дорожній лист</h3>
-          <p>Щоденні записи про пробіг, мотогодини, отримане й витрачене ПММ.</p>
-        </div>
-        <div class="step">
-          <span class="step__num">3</span>
-          <h3>Закрийте ДЛ</h3>
-          <p>Застосунок сам порахує витрату за нормами й підсумує залишки.</p>
-        </div>
-        <div class="step">
-          <span class="step__num">4</span>
-          <h3>Отримайте документи</h3>
-          <p>Донесення, журнали й офіційний дорожній лист — готові до друку.</p>
-        </div>
+      <div class="pc-download-grid">
+        <article class="pc-download-card">
+          <h3>macOS</h3>
+          <p>Підписано сертифікатом Developer ID і нотаризовано Apple —
+            відкривається без жодних попереджень системи безпеки.</p>
+          <a class="btn-download"
+             href="https://github.com/AlexFeoktistov/site_oblik_pmm/releases/latest/download/PMM-macOS.dmg">Завантажити
+            для Mac (.dmg)</a>
+          <p class="pc-download-meta">Версія 1.0.0 · macOS 12 Monterey і
+            новіше · Apple Silicon</p>
+        </article>
+        <article class="pc-download-card">
+          <h3>Windows</h3>
+          <p>Інсталятор для Windows 10/11 x64 готується — скоро буде доступний
+            тут.</p>
+          <a class="btn-download btn-download--soon" href="#" aria-disabled="true">Завантажити
+            для Windows — скоро</a>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="online-mode">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Онлайн-режим</span>
-        <h2>Опційний спільний доступ до техніки та ДЛ</h2>
-        <p>Застосунок і надалі повністю працює офлайн. За бажанням можна увімкнути
-          онлайн-режим, щоб переглядати або редагувати ту саму техніку й дорожні листи
-          з іншого пристрою — наприклад, коли з документами працюють одразу декілька
-          відповідальних осіб.</p>
-      </div>
-      <div class="card" style="max-width: 480px;">
-        <h3>Як це працює</h3>
-        <ul class="feature-list">
-          <li>Вмикається вручну в налаштуваннях — без email, телефону чи пароля</li>
-          <li>Перегляд і надання доступу до своїх даних — безкоштовно для всіх</li>
-          <li>Редагування чужих даних (лише за наданим власником дозволом) — потребує Pro-підписки</li>
-          <li>Дані можна повністю видалити з сервера будь-коли прямо в застосунку</li>
-        </ul>
-        <p style="color: var(--color-muted);">Детальніше — у
-          <a href="privacy.html">Політиці конфіденційності</a>, розділ «Онлайн-режим».</p>
-      </div>
-    </div>
-  </section>
+  <section id="subscription" class="section-block">
+        <div class="container subscription-layout">
+          <div class="section-heading section-heading-left">
+            <p class="eyebrow">Підписка</p>
+            <h2>Базовий функціонал — безкоштовний назавжди</h2>
+            <p>
+              Облік техніки, створення та закриття дорожніх листів доступні без
+              абонплати. Підписка потрібна лише для розширених звітів,
+              інфографіки та генерації офіційних документів.
+            </p>
+          </div>
 
-  <section id="plans">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Підписка</span>
-        <h2>Базовий облік — назавжди безкоштовний</h2>
-        <p>Підписка потрібна лише для звітності й офіційних документів. Оформлюється й
-          скасовується через App Store або Google Play — застосунок не зберігає дані
-          вашої картки і не має власного облікового запису.</p>
-      </div>
-      <div class="card" style="max-width: 420px;">
-        <h3>Щомісячна підписка</h3>
-        <p style="color: var(--color-muted);">Ціна вказана на сторінці застосунку в
-          App Store / Google Play.</p>
-        <ul class="feature-list">
-          <li>Донесення, журнали, інфографіка, офіційний ДЛ</li>
-          <li>Автопродовження, скасування в будь-який момент</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-</main>
+          <aside class="subscription-card">
+            <h3>Що відкриває підписка</h3>
+            <ol class="subscription-list">
+              <li>Донесення ПММ за період.</li>
+              <li>Журнали Д84 та журнал виходу машин з парку.</li>
+              <li>Інфографіка по закритих ДЛ.</li>
+              <li>Офіційний Дорожній лист у PDF.</li>
+            </ol>
+            <p class="subscription-note">
+              Щомісячна підписка оформлюється через App Store / Google Play.
+              Ціна вказана в App Store / Google Play.
+            </p>
+          </aside>
+        </div>
+      </section>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="site-footer__grid">
-      <a class="brand" href="index.html">
-        <img src="assets/img/app-icon-192.png" alt="">
-        ПММ · Облік пального
-      </a>
-      <nav>
-        <a href="#online-mode">Онлайн-режим</a>
-        <a href="contacts.html">Контакти</a>
-        <a href="privacy.html">Політика конфіденційності</a>
-        <a href="terms.html">Ліцензійна угода користувача</a>
-      </nav>
-    </div>
-    <p class="site-footer__meta">© 2026 ПММ · Облік пального. Офлайн за замовчуванням, з опційним онлайн-режимом.</p>
-  </div>
-</footer>
+      <section id="contact" class="section-block section-muted">
+        <div class="container contact-grid">
+          <div class="section-heading section-heading-left">
+            <p class="eyebrow">Контакти та підтримка</p>
+            <h2>Звертайтесь, якщо потрібна допомога</h2>
+            <p>
+              Питання щодо роботи застосунку, доступності функцій та оновлень
+              можна надіслати на електронну адресу підтримки.
+            </p>
+            <div class="support-box">
+              <span>Email підтримки</span>
+              <a href="mailto:alexeyfeoktistov1@gmail.com">alexeyfeoktistov1@gmail.com</a>
+            </div>
+          </div>
 
-<script>
-  const navToggle = document.getElementById('navToggle');
-  const siteNav = document.getElementById('siteNav');
-  navToggle.addEventListener('click', () => {
-    const isOpen = siteNav.classList.toggle('is-open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-  });
-</script>
-</body>
+          <div class="faq-card">
+            <h3>Поширені запитання</h3>
+            <div class="faq-list">
+              <details open>
+                <summary>Чи потрібен інтернет для роботи застосунку?</summary>
+                <p>Ні. Базовий функціонал працює повністю офлайн. Інтернет потрібен лише якщо ви самі увімкнете опційний онлайн-режим для спільного доступу з іншого пристрою.</p>
+              </details>
+              <details>
+                <summary>Де зберігаються мої дані?</summary>
+                <p>За замовчуванням — лише локально на вашому пристрої. Якщо ви вмикаєте онлайн-режим, дані, якими ви вирішили поділитись, додатково зберігаються на захищеному хмарному сервері.</p>
+              </details>
+              <details>
+                <summary>Що таке онлайн-режим і чи він безпечний?</summary>
+                <p>Це опційна функція для перегляду/редагування техніки й ДЛ з іншого пристрою. Реєстрація без email чи телефону — лише анонімний ідентифікатор. Доступ отримують тільки ті пристрої, яким ви самі його надали. Дані можна видалити з сервера в будь-який момент прямо в застосунку.</p>
+              </details>
+              <details>
+                <summary>Чи збирає застосунок дані про помилки?</summary>
+                <p>Так, автоматично й анонімно — текст помилки та версію застосунку, без прив'язки до вашої особи, — щоб розробник міг швидше виправляти технічні збої.</p>
+              </details>
+              <details>
+                <summary>Як скасувати підписку?</summary>
+                <p>Скасування підписки виконується через налаштування вашого облікового запису App Store або Google Play, а не в самому застосунку.</p>
+              </details>
+              <details>
+                <summary>На яких мовах доступний застосунок?</summary>
+                <p>Наразі інтерфейс застосунку доступний лише українською мовою.</p>
+              </details>
+              <details>
+                <summary>Чи є реєстрація або облікові записи?</summary>
+                <p>Для базового використання — ні. Онлайн-режим (опційно) використовує лише анонімний ідентифікатор пристрою, без email, телефону чи пароля.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>ПММ</strong>
+          <p>Облік пального та техніки для військової служби — офлайн, з опційним онлайн-режимом.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Службові посилання">
+          <a href="#online-mode">Онлайн-режим</a>
+          <a href="#pc-download">ПК-версія</a>
+          <a href="#contact">Контакти</a>
+          <a href="./privacy.html">Політика конфіденційності</a>
+          <a href="./eula.html">Ліцензійна угода користувача</a>
+        </nav>
+        <p class="footer-meta">© <span data-current-year></span> ПММ. Усі права захищено.</p>
+      </div>
+    </footer>
+  </body>
 </html>
