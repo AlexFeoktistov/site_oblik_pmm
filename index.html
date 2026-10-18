@@ -344,7 +344,7 @@
   // Тому тепер — ОДИН запит на /releases/latest (URL не містить жодної
   // назви файлу, нічого "виконуваного" в самому шляху), з якого
   // одразу читаємо download_count ОБОХ assets. Кешуємо відповідь у
-  // sessionStorage на 10 хв, щоб повторні перегляди сторінки в межах
+  // localStorage на 30 хв (переживає перезавантаження сторінки, не лише
   // однієї сесії браузера не грали зайвий запит і не впирались у ліміт
   // GitHub API (60/год на IP, спільний для відвідувачів з однієї мережі).
   function pluralizeDownloads(count) {
@@ -366,17 +366,17 @@
   }
 
   const CACHE_KEY = 'pmm_release_assets_v1';
-  const CACHE_TTL_MS = 10 * 60 * 1000;
+  const CACHE_TTL_MS = 30 * 60 * 1000;
 
   let cached = null;
   try {
-    const raw = sessionStorage.getItem(CACHE_KEY);
+    const raw = localStorage.getItem(CACHE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
       if (Date.now() - parsed.savedAt < CACHE_TTL_MS) cached = parsed.assets;
     }
   } catch (_) {
-    // Приватний режим браузера чи вимкнений sessionStorage — просто
+    // Приватний режим браузера чи вимкнений localStorage — просто
     // підемо далі без кешу, це не критично.
   }
 
@@ -389,7 +389,7 @@
         const assets = Array.isArray(release.assets) ? release.assets : [];
         applyCounts(assets);
         try {
-          sessionStorage.setItem(CACHE_KEY, JSON.stringify({ savedAt: Date.now(), assets }));
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ savedAt: Date.now(), assets }));
         } catch (_) {}
       })
       .catch(() => {
