@@ -344,20 +344,28 @@
     return `${count} завантажень`;
   }
 
-  document.querySelectorAll('[data-download-asset]').forEach((el) => {
+  function loadDownloadCount(el, attemptsLeft) {
     const asset = el.dataset.downloadAsset;
     fetch(`https://img.shields.io/github/downloads/AlexFeoktistov/site_oblik_pmm/v1.0.0/${asset}`)
-      .then((response) => (response.ok ? response.text() : null))
+      .then((response) => (response.ok ? response.text() : Promise.reject()))
       .then((svgText) => {
-        if (!svgText) return;
         const match = svgText.match(/:\s*(\d+)\s*\[/);
-        if (!match) return;
+        if (!match) return Promise.reject();
         el.textContent = pluralizeDownloads(Number(match[1]));
         el.hidden = false;
       })
       .catch(() => {
-        // Тихо нічого не показуємо — лічильник суто інформаційний.
+        // Разовий мережевий збій (CDN/з'єднання) не повинен лишати
+        // лічильник порожнім назавжди — пробуємо ще раз за секунду,
+        // максимум 3 спроби сумарно.
+        if (attemptsLeft > 1) {
+          setTimeout(() => loadDownloadCount(el, attemptsLeft - 1), 1000);
+        }
       });
+  }
+
+  document.querySelectorAll('[data-download-asset]').forEach((el) => {
+    loadDownloadCount(el, 3);
   });
 </script>
 </body>
