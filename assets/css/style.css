@@ -163,8 +163,13 @@ p {
 .ua-flag-badge {
   position: relative;
   display: inline-block;
-  width: 36px;
-  height: 36px;
+  width: 108px; /* 3× від 36px */
+  height: 64px; /* впритул до верхнього й нижнього країв шапки */
+  /* вертикально: компенсує padding: 14px 0 у .site-header__bar (вихід
+     за межі звичайного блоку аж до країв смуги шапки); горизонтально:
+     зсуває ліву межу так, щоб уся додана ширина росла ВЛІВО, а права
+     межа лишалась на місці біля іконки */
+  margin: -14px 0 -14px -72px;
   border-radius: 6px;
   background: linear-gradient(to bottom, #0057B7 50%, #FFD700 50%);
   box-shadow: 0 2px 6px rgba(0, 87, 183, 0.25);
