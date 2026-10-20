@@ -150,6 +150,53 @@ p {
   border-radius: 9px;
 }
 
+.site-header__brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Окремий прапор України в шапці — самостійний елемент, не рамка й не
+   декорація іконки. Ті самі кольори/ефект, що й у застосунку (бічна
+   панель ПК-версії): синя смуга зверху, жовта знизу, рівно 50/50, з
+   повільним діагональним "шовковим" мерехтінням. */
+.ua-flag-badge {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #0057B7 50%, #FFD700 50%);
+  box-shadow: 0 2px 6px rgba(0, 87, 183, 0.25);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ua-flag-badge::after {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 65%
+  );
+  animation: uaFlagShimmer 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes uaFlagShimmer {
+  0%, 100% { transform: translateX(-25%); }
+  50% { transform: translateX(25%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ua-flag-badge::after {
+    animation: none;
+  }
+}
+
 .nav {
   display: flex;
   align-items: center;
