@@ -262,11 +262,11 @@
           <h3><span class="badge badge--free">Windows</span> ПК версія для Windows</h3>
           <p>Інсталятор одним файлом, без залежностей.</p>
           <div style="display: flex; align-items: center; gap: 12px; flex-wrap: nowrap;">
-            <a class="btn btn-store" href="https://github.com/AlexFeoktistov/site_oblik_pmm/releases/download/v1.0.1/PMM-Windows-1.0.1-Setup.exe" target="_blank" rel="noopener">
+            <a class="btn btn-store" href="https://github.com/AlexFeoktistov/site_oblik_pmm/releases/download/v1.0.2/PMM-Windows-1.0.2-Setup.exe" target="_blank" rel="noopener">
               <svg class="btn-store__icon" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zM203.8 65.3L448 32v228.8H203.8V65.3zm0 381.4l244.2-33.3V271.2H203.8v175.5z"/></svg>
               <span class="btn-store__text"><small>Завантажити для</small>Windows (.exe)</span>
             </a>
-            <span class="download-count" data-download-asset="PMM-Windows-1.0.1-Setup.exe" style="font-size: 0.82rem; color: var(--color-muted); background: #efece2; padding: 5px 12px; border-radius: 999px;" hidden></span>
+            <span class="download-count" data-download-asset="PMM-Windows-1.0.2-Setup.exe" style="font-size: 0.82rem; color: var(--color-muted); background: #efece2; padding: 5px 12px; border-radius: 999px;" hidden></span>
           </div>
           <p style="font-size: 0.85rem; font-weight: 700; color: var(--color-ink); margin: 14px 0 6px;">Мінімальні системні вимоги:</p>
           <ul class="feature-list">
@@ -350,6 +350,15 @@
   // localStorage на 30 хв (переживає перезавантаження сторінки, не лише
   // однієї сесії браузера не грали зайвий запит і не впирались у ліміт
   // GitHub API (60/год на IP, спільний для відвідувачів з однієї мережі).
+  //
+  // /releases/latest НЕДОСТАТНЬО, якщо платформи оновлюються не
+  // синхронно (саме так і сталось: вийшла 1.0.2 лише для mac, Windows
+  // свідомо лишили на 1.0.1) — "latest" це ОДИН конкретний реліз-тег, і
+  // asset з іншого тега (старішого) туди просто не входить, пошук за
+  // назвою файлу мовчки не знаходить нічого. Тому тепер /releases
+  // (список останніх релізів, той самий один запит і той самий ліміт) —
+  // і шукаємо назву файлу серед assets УСІХ них одразу, незалежно від
+  // того, якому саме тегу вона належить.
   function pluralizeDownloads(count) {
     const mod100 = count % 100;
     const mod10 = count % 10;
@@ -368,7 +377,10 @@
     });
   }
 
-  const CACHE_KEY = 'pmm_release_assets_v1';
+  // v2 (було v1_, /releases/latest) — свідомо нова назва ключа: старий
+  // кеш від зламаної v1-версії (порожні/застарілі asset-и) інакше
+  // лишався б у localStorage відвідувача ще до 30 хв і після цього фіксу.
+  const CACHE_KEY = 'pmm_release_assets_v2';
   const CACHE_TTL_MS = 30 * 60 * 1000;
 
   let cached = null;
@@ -386,10 +398,13 @@
   if (cached) {
     applyCounts(cached);
   } else {
-    fetch('https://api.github.com/repos/AlexFeoktistov/site_oblik_pmm/releases/latest')
+    fetch('https://api.github.com/repos/AlexFeoktistov/site_oblik_pmm/releases')
       .then((response) => (response.ok ? response.json() : Promise.reject()))
-      .then((release) => {
-        const assets = Array.isArray(release.assets) ? release.assets : [];
+      .then((releases) => {
+        const assets = Array.isArray(releases)
+          ? releases.flatMap((release) =>
+              Array.isArray(release.assets) ? release.assets : [])
+          : [];
         applyCounts(assets);
         try {
           localStorage.setItem(CACHE_KEY, JSON.stringify({ savedAt: Date.now(), assets }));
